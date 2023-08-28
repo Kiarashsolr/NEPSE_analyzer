@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-openai.api_key = open('auth.txt', 'r').readlines()[0].strip()
+openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
 @app.route('/analyze', methods=['POST'])
