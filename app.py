@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # Set the OpenAI API key based on environment
 if os.environ.get('FLASK_ENV') == 'development':
-    openai.api_key = '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'  # Replace with your local API key
+    openai.api_key = 'YOUR_LOCAL_API_KEY'  # Replace with your local API key
 else:
     openai.api_key = os.environ.get('OPENAI_API_KEY')
 
