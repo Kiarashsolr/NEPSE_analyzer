@@ -1,9 +1,11 @@
+from flask_cors import CORS
 import csv, re, os
 import openai
 from duckduckgo_search import ddg_news
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
+CORS(app)
 
 # Set the OpenAI API key based on environment
 if os.environ.get('FLASK_ENV') == 'development':
