@@ -9,7 +9,7 @@ CORS(app)
 
 # Set the OpenAI API key based on environment
 if os.environ.get('FLASK_ENV') == 'development':
-    openai.api_key = 'YOUR_LOCAL_API_KEy'  # Replace with your local API key
+    openai.api_key = 'YOUR_LOCAL_API_KEY'  # Replace with your local API key
 else:
     openai.api_key = os.environ.get('OPENAI_API_KEY')
 
