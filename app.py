@@ -16,13 +16,19 @@ else:
     
 @app.route('/nyucs', methods=['POST'])
 def nyucs_route():
-    data = request.json  # Get JSON data from the request
-    # Add a random letter from a-z to the input data
-    random_letter = random.choice(string.ascii_lowercase)
-    modified_data = {key: value + random_letter for key, value in data.items()}
+    # Get the input data from the request
+    data = request.json
+    
+    # Perform the operation of adding "hello" to the input data
+    # Assuming the input data is a dictionary and we're appending to a key called 'input'
+    if 'input' in data:
+        data['input'] += " hello"
+    else:
+        return jsonify({"error": "The JSON should include an 'input' key."}), 400
+    
+    # Send back the modified data as "response"
+    return jsonify({"response": data['input']})
 
-    # Return the modified data as JSON
-    return jsonify(modified_data)
 
 
 
