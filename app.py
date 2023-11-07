@@ -12,6 +12,19 @@ if os.environ.get('FLASK_ENV') == 'development':
     openai.api_key = 'YOUR_LOCAL_API_KEY'  # Replace with your local API key
 else:
     openai.api_key = os.environ.get('OPENAI_API_KEY')
+    
+    
+@app.route('/nyucs', methods=['POST'])
+def nyucs_route():
+    data = request.json  # Get JSON data from the request
+    # Add a random letter from a-z to the input data
+    random_letter = random.choice(string.ascii_lowercase)
+    modified_data = {key: value + random_letter for key, value in data.items()}
+
+    # Return the modified data as JSON
+    return jsonify(modified_data)
+
+
 
 @app.route('/analyze', methods=['POST'])
 def analyze_company():
