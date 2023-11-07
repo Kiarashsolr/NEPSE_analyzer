@@ -19,13 +19,22 @@ else:
 def nyucs_route():
     # Getting inputs from the request
     data = request.json
-    input_content = data.get('input', '')
+    history = data.get('history', '')
+    preferences = data.get('preferences', '')
+    exactLimitations = data.get('exactLimitations', '')
+    studentBasedLimitations = data.get('studentBasedLimitations', '')
 
-    # Append "hello" to the input content
-    modified_content = input_content + "hello"
+    # Concatenate the values for the response
+    concatenated_response = history + preferences + exactLimitations + studentBasedLimitations + "response"
 
-    # Return the modified content as "response" in a JSON
-    return jsonify({"response": modified_content})
+    # Concatenate the values for the recommendations
+    concatenated_recommendations = history + preferences + exactLimitations + studentBasedLimitations + "recommendation"
+
+    # Return the concatenated content as "response" and "recommendations" in a JSON
+    return jsonify({
+        "response": concatenated_response,
+        "recommendations": concatenated_recommendations
+    })
 
 
 
