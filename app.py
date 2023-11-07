@@ -16,19 +16,17 @@ else:
     
 @app.route('/nyucs', methods=['POST'])
 def nyucs_route():
-    # Get the input data from the request
+    # Get the JSON data sent to the route
     data = request.json
-    
-    # Perform the operation of adding "hello" to the input data
-    # Assuming the input data is a dictionary and we're appending to a key called 'input'
-    if 'input' in data:
-        data['input'] += " hello"
-    else:
-        return jsonify({"error": "The JSON should include an 'input' key."}), 400
-    
-    # Send back the modified data as "response"
-    return jsonify({"response": data['input']})
 
+    # Your processing here - appending "hello" to the input
+    if data:
+        response_data = {k: f"{v} hello" for k, v in data.items()}
+    else:
+        response_data = {"response": "hello"}
+
+    # Return the modified data as JSON
+    return jsonify({"response": response_data})
 
 
 
